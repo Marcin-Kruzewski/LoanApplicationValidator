@@ -34,8 +34,10 @@ public class Pesel {
 
     @Override
     public String toString() {
-        return "Pesel{" +
-                "peselNums=" + Arrays.toString(peselNums) +
-                '}';
+        String peselString = "";
+        for (int i = 0; i < 11; i++) {
+            peselString += String.valueOf(peselNums[i]);
+        }
+        return peselString;
     }
 }

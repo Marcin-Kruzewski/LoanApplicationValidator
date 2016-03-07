@@ -1,5 +1,7 @@
 package pl.edu.pjatk.poj.LoanVerificator;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -7,6 +9,9 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args){
+        //Dateformat
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        //
         LoanApplication application = new LoanApplication();
         application.setFirstName("Marcin");
         application.setSurname("Krużewski");
@@ -37,13 +42,14 @@ public class Main {
         }catch (TypeNotPresentException exc){
             System.out.println("Numer rachunku musi składać się z cyfr");
         }
-        application.setDateOfBirdth(new Date(1992, 6, 20));
+        try {
+            application.setDateOfBirdth(format.parse("1992-06-20"));
+        }catch (ParseException exc){
+            System.out.println("Podaj poprawną datę w formacie yyyy-mm-dd");
+        }
+        application.setGender(Gender.Male);
 
-        if (application.isNameValid(application.getFirstName())) System.out.println("Name ok");
-        if (application.isNameValid(application.getSurname())) System.out.println("Surname ok");
-        if (application.isPeselValid()) System.out.println("PESEL ok");
-        if (application.isNipValid()) System.out.println("NIP ok");
-        if (application.isBankAccountNumberValid()) System.out.println("Numer rachunku bankowego ok");
-        if (application.isDateOfBirdthValid()) System.out.println("Date of birdth ok");
+        if (application.isApplicationValid()) System.out.println("Dane są poprawne");
+
     }
 }

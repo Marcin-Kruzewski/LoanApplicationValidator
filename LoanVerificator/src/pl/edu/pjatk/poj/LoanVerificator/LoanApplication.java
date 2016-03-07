@@ -1,5 +1,6 @@
 package pl.edu.pjatk.poj.LoanVerificator;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -71,26 +72,16 @@ public class LoanApplication {
     }
 
     public boolean isNameValid(String Name){
-        try {
-            if (Name.length() > 1) return true;
-        }catch (NullPointerException exc){}
-        return false;
+        if (Name.length() > 1) return true;
+        else return false;
     }
 
     public boolean isNipValid() {
-        try{
-            return nip.isChechSumValid();
-        }catch (NullPointerException exc){
-            return false;
-        }
+        return nip.isChechSumValid();
     }
 
     public boolean isPeselValid(){
-        try {
-            return pesel.isCheckSumValid();
-        }catch (NullPointerException exc) {
-            return false;
-        }
+        return pesel.isCheckSumValid();
     }
 
     public boolean isBankAccountNumberValid() {
@@ -98,7 +89,21 @@ public class LoanApplication {
     }
 
     public boolean isDateOfBirdthValid(){
-        //TODO: validation with pesel digits.
-        return true;
+        String datePeselFormat = new SimpleDateFormat("yyMMdd").format(dateOfBirdth);
+        if (pesel.toString().startsWith(datePeselFormat))return true;
+        else return false;
+    }
+
+    public boolean isGenderValid(){
+        if ((gender == Gender.Male) && (pesel.getPeselNums()[9] % 2 == 1)) return true;
+        if ((gender == Gender.Female) && (pesel.getPeselNums()[9] % 2 == 0)) return true;
+        return false;
+    }
+
+    public boolean isApplicationValid(){
+        if(isNameValid(firstName) && isNameValid(surname) && isPeselValid() &&
+                isNipValid() && isBankAccountNumberValid() && isDateOfBirdthValid() &&
+                isGenderValid()) return true;
+        else return false;
     }
 }
