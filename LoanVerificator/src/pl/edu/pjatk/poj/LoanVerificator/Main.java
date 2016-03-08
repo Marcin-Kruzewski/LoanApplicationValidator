@@ -9,21 +9,33 @@ import java.util.Date;
  */
 public class Main {
     public static void main(String[] args){
-        //Input date format
+        
+    	
+    	//Input date format
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         //
+        
+        
         LoanApplication application = new LoanApplication();
+        
+        //data setting
+        
         application.setFirstName("Marcin");
+        
         application.setSurname("Kru¿ewski");
+        
+        
         try{
             application.setPesel(new Pesel("92063008891"));
         }catch(NullPointerException exc){
-            System.out.println("Pesel nie moÅ¼e byæ pusty.");
+            System.out.println("Pesel nie mo¿e byæ pusty.");
         }catch(LengthException exc){
             System.out.println("Pesel musi mieæ dok³adnie 11 znaków");
         }catch (TypeNotPresentException exc){
             System.out.println("pesel musi sk³adaæ siê z cyfr");
         }
+        
+        
         try{
             application.setNip(new Nip("1234563218"));
         }catch(NullPointerException exc){
@@ -33,6 +45,8 @@ public class Main {
         }catch (TypeNotPresentException exc){
             System.out.println("Nip musi sk³ada siê z cyfr");
         }
+        
+        
         try{
             application.setBankAccountNumber(new BankAccountNumber("11223344556677889900123456"));
         }catch(NullPointerException exc){
@@ -42,6 +56,8 @@ public class Main {
         }catch (TypeNotPresentException exc){
             System.out.println("Numer rachunku musi sk³adaæ siê z cyfr");
         }
+        
+        
         try {
             application.setDateOfBirdth(format.parse("1992-06-30"));
         }catch (ParseException exc){
@@ -49,7 +65,7 @@ public class Main {
         }
         application.setGender(Gender.Male);
         
+        //data validation
         if (application.isApplicationValid()) System.out.println("Dane s¹ poprawne");
-
     }
 }

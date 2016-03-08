@@ -3,7 +3,7 @@ package pl.edu.pjatk.poj.LoanVerificator;
 import java.util.Arrays;
 
 /**
- * Created by Marcin Krużewski on 3/6/2016.
+ * Created by Marcin Kruzewski on 3/6/2016.
  */
 public class BankAccountNumber {
     private int[] banNums = new int[26];
@@ -21,13 +21,15 @@ public class BankAccountNumber {
     }
 
     public boolean isBankAccountNumberValid(){
-        return true;
+    	return IbanValidator.isBANValid(this.toString());
     }
 
     @Override
     public String toString() {
-        return "BankAccountNumber{" +
-                "banNums=" + Arrays.toString(banNums) +
-                '}';
+        String ibanString = "PL";
+        for (int i = 0; i < 11; i++) {
+            ibanString += String.valueOf(banNums[i]);
+        }
+        return ibanString;
     }
 }
