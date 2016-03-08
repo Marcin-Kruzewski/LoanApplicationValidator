@@ -5,51 +5,51 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Marcin on 3/5/2016.
+ * Created by Marcin Kruzewski on 3/5/2016.
  */
 public class Main {
     public static void main(String[] args){
-        //Dateformat
+        //Input date format
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         //
         LoanApplication application = new LoanApplication();
         application.setFirstName("Marcin");
-        application.setSurname("KruÅ¼ewski");
+        application.setSurname("Kru¿ewski");
         try{
-            application.setPesel(new Pesel("92062008892"));
+            application.setPesel(new Pesel("92063008891"));
         }catch(NullPointerException exc){
-            System.out.println("Pesel nie moÅ¼e byÄ‡ pusty.");
+            System.out.println("Pesel nie moÅ¼e byæ pusty.");
         }catch(LengthException exc){
-            System.out.println("Pesel musi mieÄ‡ dokÅ‚adnie 11 znakÃ³w");
+            System.out.println("Pesel musi mieæ dok³adnie 11 znaków");
         }catch (TypeNotPresentException exc){
-            System.out.println("pesel musi skÅ‚adaÄ‡ siÄ™ z cyfr");
+            System.out.println("pesel musi sk³adaæ siê z cyfr");
         }
         try{
             application.setNip(new Nip("1234563218"));
         }catch(NullPointerException exc){
-            System.out.println("Nip nie moÅ¼e byÄ‡ pusty.");
+            System.out.println("Nip nie mo¿e byæ pusty.");
         }catch(LengthException exc){
-            System.out.println("Nip musi mieÄ‡ dokÅ‚adnie 10 znakÃ³w");
+            System.out.println("Nip musi mieæ dok³adnie 10 znaków");
         }catch (TypeNotPresentException exc){
-            System.out.println("Nip musi skÅ‚adaÄ‡ siÄ™ z cyfr");
+            System.out.println("Nip musi sk³ada siê z cyfr");
         }
         try{
             application.setBankAccountNumber(new BankAccountNumber("11223344556677889900123456"));
         }catch(NullPointerException exc){
-            System.out.println("Numer rachunku nie moÅ¼e byÄ‡ pusty.");
+            System.out.println("Numer rachunku nie moze byæ pusty.");
         }catch(LengthException exc){
-            System.out.println("Numer rachunku musi mieÄ‡ dokÅ‚adnie 26 znakÃ³w");
+            System.out.println("Numer rachunku musi mieæ dok³adnie 26 znaków");
         }catch (TypeNotPresentException exc){
-            System.out.println("Numer rachunku musi skÅ‚adaÄ‡ siÄ™ z cyfr");
+            System.out.println("Numer rachunku musi sk³adaæ siê z cyfr");
         }
         try {
-            application.setDateOfBirdth(format.parse("1992-06-20"));
+            application.setDateOfBirdth(format.parse("1992-06-30"));
         }catch (ParseException exc){
-            System.out.println("Podaj poprawnÄ… datÄ™ w formacie yyyy-mm-dd");
+            System.out.println("Podaj poprawn¹ datê w formacie yyyy-mm-dd");
         }
         application.setGender(Gender.Male);
-
-        if (application.isApplicationValid()) System.out.println("Dane sÄ… poprawne");
+        
+        if (application.isApplicationValid()) System.out.println("Dane s¹ poprawne");
 
     }
 }
