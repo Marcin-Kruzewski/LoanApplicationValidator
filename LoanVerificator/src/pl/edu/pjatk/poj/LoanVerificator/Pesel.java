@@ -1,11 +1,8 @@
 package pl.edu.pjatk.poj.LoanVerificator;
 
-import sun.security.util.Length;
-
-import java.util.Arrays;
 
 /**
- * Created by Marcin Kru¿ewski on 3/6/2016.
+ * Created by Marcin Kruï¿½ewski on 3/6/2016.
  */
 public class Pesel {
     private int[] peselNums = new int[11];
