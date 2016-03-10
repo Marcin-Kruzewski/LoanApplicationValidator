@@ -27,22 +27,22 @@ public class Main {
         try{
             application.setPesel(new Pesel("92063008891"));
         }catch(NullPointerException exc){
-            System.out.println("Pesel nie może być pusty.");
+            System.out.println("PESEL nie może być pusty.");
         }catch(LengthException exc){
-            System.out.println("Pesel musi mieć dokładnie 11 znaków");
+            System.out.println("PESEL musi mieć dokładnie 11 znaków");
         }catch (TypeNotPresentException exc){
-            System.out.println("pesel musi składać się z cyfr");
+            System.out.println("PESEL musi składać się z cyfr");
         }
         
         
         try{
             application.setNip(new Nip("1234563218"));
         }catch(NullPointerException exc){
-            System.out.println("Nip nie może być pusty.");
+            System.out.println("NIP nie może być pusty.");
         }catch(LengthException exc){
-            System.out.println("Nip musi mieć dokładnie 10 znaków");
+            System.out.println("NIP musi mieć dokładnie 10 znaków");
         }catch (TypeNotPresentException exc){
-            System.out.println("Nip musi składa się z cyfr");
+            System.out.println("NIP musi składa się z cyfr");
         }
         
         
